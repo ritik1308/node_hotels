@@ -42,118 +42,43 @@ app.get('/', function (req, res) {
 app.get('/idli',(req,res)=>{
     res.send("hiii you have to select idli")
 })
-// app.post('/person',async(req,res)=>{
-//   try{
-//     const data=req.body;
-//     const newPerson=new Person(data);
-//     const response=await newPerson.save();
-//     console.log('data is saved');
-//     res.status(200).json(response);
-//   }
-//   catch(err){
-//     console.log(err);
-//     res.status(500).json({error:"internal server error"});
-//   }
-// })
-// app.get('/person' ,async(req,res)=>{
-//   try{
-//     const data= await Person.find();
-//     console.log("data is fetched");
-//     res.status(200).json(data);
-//   }
-//   catch(err){
-//     console.log(err);
-//     res.status(500).json({error:"internal server error"});
-//   }
-// })
 
-// app.post('/menu', async(req,res)=>{
-//   try{
-//     const data=req.body;
-//     const newMenu= new Menu(data);
-//     const response=await newMenu.save();
-//     console.log('data is saved');
-//     res.status(200).json(response);
-//   }
-//   catch(err){
-//     console.log(err);
-//     res.status(500).json("internal server error");
-//   }
-// })
-// app.get('/menu',async(req,res)=>{
-//     try{
-//       const data= await Menu.find();
-//       res.status(200).json(data);
-//     }
-//     catch(err){
-//       console.log(err);
-//       console.log("data is not fineddd");
-//     }
 
-// })
-// app.get('/person/:worktype',async(req,res)=>{
-//   try{
-//     const worktype=req.params.worktype;
-//     if(worktype=='chef'||worktype=='waiter' ||worktype=="manager"){
-//       const response= await Person.find({work:worktype});
-    
-//       console.log("response mil gya");
-//       res.status(200).json(response);
 
-//     }
-//     else{
-//       res.status(400).json({srror:"invaild worktype"});
-//     }
+app.post('/menu', async(req,res)=>{
+  try{
+    const data=req.body;
+    const newMenu= new Menu(data);
+    const response=await newMenu.save();
+    console.log('data is saved');
+    res.status(200).json(response);
+  }
+  catch(err){
+    console.log(err);
+    res.status(500).json("internal server error");
+  }
+})
+
+
+app.get('/menu',async(req,res)=>{
+    try{
+      const data= await Menu.find();
+      res.status(200).json(data);
+    }
+    catch(err){
+      console.log(err);
+      console.log("data is not fineddd");
+    }
+
+})
    
     
-//   }
-//   catch(err){
-//     console.log(err);
-//     console.log("internal serber error")
-//   }
-// })
 
 
 
-// app.put('/person/:id',async(req,res)=>{
-//   try{
-//       const personId=req.params.id;
-//       const updatdata=req.body;
-//       const response= await Person.findByIdAndUpdate(personId,updatdata,{
-//           new:true,
-//           runValidators:true
-//       })
-//       if(!response){
-//           return res.status(202).json({error:"person is not found"});
-//       }
-//       console.log('data is updated');
-//       res.status(200).json(response);
-//   }
-//   catch(err){
-//       console.log(err);
-//       res.status(500).json({error:"internal server error"})
-//   }
-// })
-// app.delete('/person/:id',async(req,res)=>{
-//   try{
-//       const personId=req.params.id;
-//       const response=await Person.findByIdAndDelete(personId);
-//       if(!response){
-//           res.status(404).json({error:"we can't get data"});
-//       }
-//       console.log("data is successfully Deleted");
-//       res.status(500).json("person deleted succesfully");
-//   }
-//   catch(err){
-//       console.log(err);
-//       res.status(500).json({error:"internal server error"})
 
-//   }
-// })
-
-
- const Rounter=require('./Routes/PersonRoutes');
- app.use('/person',Rounter);
+const Rounter=require('./Routes/PersonRoutes');
+app.use('/Person',Rounter);
 
 app.listen(3000,()=>{
   console.log("node.js server worked");
