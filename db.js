@@ -19,9 +19,9 @@
 // module.exports=db;
 
 const mongoose=require('mongoose');
-//const mongodbUrl='mongodb://localhost:27017/hotels';
+const mongodbUrl='mongodb://localhost:27017/hotels';
 require('dotenv').config();
-const mongodbUrl= process.env.Mongo_DB;
+// const mongodbUrl= process.env.Mongo_DB;
 
 mongoose.connect( mongodbUrl,{
     useNewUrlParser:true,
@@ -35,6 +35,6 @@ db.on('disconnected',()=>{
     console.log("database is shutdown");
 });
 db.on('error',()=>{
-    console.error("there was error in connection");
+    console.error("there was error in connection",error);
 });
 module.exports=db;
