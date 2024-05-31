@@ -35,6 +35,6 @@ db.on('disconnected',()=>{
     console.log("database is shutdown");
 });
 db.on('error',()=>{
-    console.error("there was error in connection",err);
+    console.error("there was error in connection");
 });
 module.exports=db;
