@@ -19,7 +19,10 @@
 // module.exports=db;
 
 const mongoose=require('mongoose');
-const mongodbUrl='mongodb://localhost:27017/hotels';
+//const mongodbUrl='mongodb://localhost:27017/hotels';
+require('dotenv').config();
+const mongodbUrl= process.env.Mongo_DB;
+
 mongoose.connect( mongodbUrl,{
     useNewUrlParser:true,
     useUnifiedTopology:true

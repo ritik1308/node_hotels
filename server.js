@@ -1,27 +1,3 @@
-// var fs=require('fs');
-// var os=require('os');
-// var notes=require("./notes.js");
-// var _ = require('lodash');
-// // const user=os.userInfo();
-// // console.log(user);
-// // console.log(user.username);
-
-// // fs.appendFile('greeting.txt',"hii"+os.username+'\n',()=>{
-// //     console.log("file is loaded")
-// // });
-// // console.log(notes);
-// //  const val=notes.add(100+addEventListener,b);
-// //  console.log(val);
-// console.log(notes.age);
-// const val=notes.add(100+10,50);
-// let array=["people","orange"];
-// // const newarray=_.concat(array,"system");
-// var other = _.concat(array, "pink","system");
-// console.log(other);
-
-
-
-
 
 // Create our own Server.......................
   
@@ -34,6 +10,7 @@ const db=require('./db');
  app.use(bodyParser.json());
  const Person=require('./models/person');
  const Menu=require('./models/menu');
+ require('dotenv').config();
 
 app.get('/', function (req, res) {
   res.send('Hello World')
@@ -79,8 +56,9 @@ app.get('/menu',async(req,res)=>{
 
 const Rounter=require('./Routes/PersonRoutes');
 app.use('/Person',Rounter);
+const port=process.env.Port ||3000;
 
-app.listen(3000,()=>{
+app.listen(port,()=>{
   console.log("node.js server worked");
   
 });
